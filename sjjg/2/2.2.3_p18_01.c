@@ -1,5 +1,5 @@
 /**
- * @file 2.2.3.c P18 1
+ * @file 2.2.3.c P18 1 顺序表
  * @author your name (you@domain.com)
  * @brief 
  * @version 0.1
