@@ -1,5 +1,5 @@
 /**
- * @file 2.3.2.c
+ * @file 2.3.2.1
  * @author D1n910 (260002330@qq.comss)
  * @brief 单链表上基本操作的实现 1、采用头插法建立单链表 p29
  * @version 0.1
@@ -8,43 +8,58 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
+
 #define ElemType int
-#define my_printf(params) (printf(#params " %d \n\n", (params)));
-typedef struct LNode{
+#define my_printf(params) (printf(#params " %d \n", (params)));
+typedef struct LNode
+{
     ElemType data;
     struct LNode *next;
-} LNode, *LinkList;
+}LNode, *LinkList;
 
-LinkList List_HeadInsert(LinkList L, ElemType e);
+/**
+ * @brief 头插法
+ * 
+ * @param L 
+ * @return LinkList 
+ */
+LinkList List_HeadInsert(LinkList L);
 
 int main(void)
 {
     LinkList L;
-    LNode head_node;
-    head_node.data = 0;
-    L = &head_node;
-
-    L = List_HeadInsert(L, 3);
-
-    my_printf(L->data);
-    my_printf(L->next->data);
+    L = List_HeadInsert(L); // 头插法获取数据
+    L = List_HeadInsert(L); // 头插法获取数据
+    printf("You have the last number is %d.\n", L->next->data);
     return 0;
 }
 
-LinkList List_HeadInsert(LinkList L, ElemType e)
+LinkList List_HeadInsert(LinkList L)
 {
-    LNode new_point;
-    new_point.data = e;
-    my_printf(e);
-    // 头结点的data存储目前的长度，如果长度不为0，则头结点的下一个为新结点的下一个
-    if (L->data != 0) {
-        new_point.next = L->next; // 获取L头结点对应的next
+    LNode *s;
+    int x;
+    L = (LinkList)malloc(sizeof(LNode)); // 创建头结点
+    L->next = NULL;
+
+    printf("Please enter the number('9999' is mean end):\n");
+    scanf("%d", &x);
+
+    while (x != 9999) // 9999 表示结束
+    {
+        s = (LNode*)malloc(sizeof(LNode));
+        s->data = x;
+        my_printf(s->data);
+        s->next = L->next;
+        L->next = s;
+        my_printf(L->next->data);
+        if (L->next->next != NULL) {
+            my_printf(L->next->next->data); // 输出下一个
+        }
+        printf("Please enter the number('9999' is mean end):\n");
+        scanf("%d", &x);
     }
-    my_printf(new_point.data);
-    L->next = &new_point; // 现在头结点的next指向新创建的点
-    my_printf(L->next->data);
-    L->data++;
     return L;
 }
