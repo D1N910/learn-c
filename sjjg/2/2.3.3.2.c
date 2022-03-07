@@ -70,6 +70,7 @@ int main(void)
     DLinkList L;
     L = DList_tailInsert(L); // 尾插法插入数据
 
+
     my_printf(L->next->data);
     my_printf(L->next->next->data);
     my_printf(L->next->next->prior->data);
