@@ -54,3 +54,4 @@ dkms.conf
 # Unignore all with extensions
 !*.*
 */*.dSYM/
+a.out

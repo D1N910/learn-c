@@ -1,2 +1,10 @@
 {
+    "files.associations": {
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c",
+        "stdio.h": "c",
+        "*.1c": "c"
+    }
 }
