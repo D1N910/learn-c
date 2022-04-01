@@ -6,6 +6,7 @@
         "vector": "c",
         "stdio.h": "c",
         "*.1c": "c",
-        "iterator": "c"
+        "iterator": "c",
+        "stdlib.h": "c"
     }
 }
