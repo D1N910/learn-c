@@ -7,6 +7,7 @@
         "stdio.h": "c",
         "*.1c": "c",
         "iterator": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "__split_buffer": "c"
     }
 }
