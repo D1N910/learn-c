@@ -10,6 +10,7 @@
         "stdlib.h": "c",
         "__split_buffer": "c",
         "stdbool.h": "c",
-        "__node_handle": "c"
+        "__node_handle": "c",
+        "complex": "c"
     }
 }
