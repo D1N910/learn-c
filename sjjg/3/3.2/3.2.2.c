@@ -100,6 +100,11 @@ int main(void)
 
 void InitQueue(SqQueue *Q) {
     Q->front = Q->rear = 0;
+    /**
+     * @brief 队尾指针指向队尾元素的写法
+     * Q->front = 0;
+     * Q->rear = MaxSize - 1;
+     */
 }
 
 _Bool QueueEmpty(SqQueue Q) {
@@ -112,13 +117,25 @@ _Bool QueueEmpty(SqQueue Q) {
 
 _Bool EnQueue(SqQueue *Q, ElementType x) {
     if ((Q->rear + 1) % MaxSize == Q->front) {
+        /**
+         * @brief 队尾指针指向队尾元素的写法判断满
+         * 1、判断是不是位于front的后两个位置
+         * 2、用size变量
+         * 3、用tag变量
+         */
         return false;
     }
     Q->data[Q->rear] = x;
     Q->rear = (Q->rear + 1) % MaxSize; // 队尾指针加1取模
+    // 队尾指针指向队尾元素的下一个元素
+    /**
+     * @brief 队尾指针指向队尾元素的写法
+     * Q->rear = (Q->rear + 1) % MaxSize;
+     * Q->data[Q->rear] = x;
+     */
     /**
      * @brief 循环队列
-     * 用模运算将存储空间在逻辑上变成了“环装”
+     * 用模运算将存储空间在逻辑上变成了“环状”
      */
     return true;
 }

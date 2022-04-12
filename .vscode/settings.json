@@ -8,6 +8,8 @@
         "*.1c": "c",
         "iterator": "c",
         "stdlib.h": "c",
-        "__split_buffer": "c"
+        "__split_buffer": "c",
+        "stdbool.h": "c",
+        "__node_handle": "c"
     }
 }
