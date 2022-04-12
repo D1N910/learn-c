@@ -11,6 +11,7 @@
         "__split_buffer": "c",
         "stdbool.h": "c",
         "__node_handle": "c",
-        "complex": "c"
+        "complex": "c",
+        "__locale": "c"
     }
 }
