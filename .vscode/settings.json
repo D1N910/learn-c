@@ -12,6 +12,7 @@
         "stdbool.h": "c",
         "__node_handle": "c",
         "complex": "c",
-        "__locale": "c"
+        "__locale": "c",
+        "__string": "c"
     }
 }
