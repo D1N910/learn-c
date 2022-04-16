@@ -59,7 +59,19 @@ int StrCompare(SString, SString);
  */
 int Index1(SString, SString);
 
+/**
+ * @brief 朴素匹配算法
+ * 
+ * @return int 
+ */
 int Index2(SString, SString);
+
+/**
+ * @brief 模式匹配：KMP算法
+ * 
+ * @return int 
+ */
+int Index_KMP(SString, SString, int next[]);
 
 
 /**
@@ -149,6 +161,26 @@ int Index2(SString S, SString T) {
             i= i-j+2; // 指针到下一个位置
             j= 1; // 指针回退
         }
+    }
+
+    if (j>T.length)
+        return i-T.length;
+    else
+        return 0;
+}
+
+int Index_KMP(SString S, SString T, int next[])
+{
+    int i=1, j=1;
+    while ( i<= S.length && j <= T.length)
+    {
+        if (j==0 || S.ch[i] == T.ch[j])
+        {
+            ++i;
+            ++j; // 继续比较后继字符串
+        }
+        else 
+            j= next[j];
     }
 
     if (j>T.length)
