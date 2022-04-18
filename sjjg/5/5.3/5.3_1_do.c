@@ -28,8 +28,8 @@ void PostOrder(LBinaryTree);
 // 添加值
 void AddValue(LBinaryTree, int);
 
-// 添加值
-void AddValue(LBinaryTree, int);
+// 获得深度
+int TreeDepth(LBinaryTree);
 
 int main(void){
     LBinaryTree T = NULL;
@@ -37,7 +37,9 @@ int main(void){
     AddValue(T, 20);
     AddValue(T, 21);
     AddValue(T, 19);
-    // AddValue(T, 22);
+    AddValue(T, 22);
+    AddValue(T, 100);
+    AddValue(T, 101);
     printf("get data %d \n", T->data);
     printf("get data %d \n", T->left->data);
     printf("get data %d \n", T->right->data);
@@ -48,6 +50,8 @@ int main(void){
     printf("\n");
     PostOrder(T);
     printf("\n");
+
+    printf("Depth: %d \n", TreeDepth(T));
 
     return 0;
 }
@@ -106,5 +110,16 @@ void PostOrder(LBinaryTree T) {
         PreOrder(T->left);
         PreOrder(T->right);
         printf("%d ", T->data);
+    }
+}
+
+// 获得深度
+int TreeDepth(LBinaryTree T) {
+    if (T == NULL) {
+        return 0;
+    } else {
+        int l = TreeDepth(T->left);
+        int r = TreeDepth(T->right);
+        return l > r ? l + 1 : r + 1;
     }
 }
