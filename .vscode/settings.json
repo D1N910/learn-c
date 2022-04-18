@@ -13,6 +13,7 @@
         "__node_handle": "c",
         "complex": "c",
         "__locale": "c",
-        "__string": "c"
+        "__string": "c",
+        "ios": "c"
     }
 }
