@@ -98,17 +98,17 @@ void PreOrder(LBinaryTree T) {
 // 中序遍历
 void MidOrder(LBinaryTree T) {
     if (T != NULL) {
-        PreOrder(T->left);
+        MidOrder(T->left);
         printf("%d ", T->data);
-        PreOrder(T->right);
+        MidOrder(T->right);
     }
 }
 
 // 后序遍历
 void PostOrder(LBinaryTree T) {
     if (T != NULL) {
-        PreOrder(T->left);
-        PreOrder(T->right);
+        PostOrder(T->left);
+        PostOrder(T->right);
         printf("%d ", T->data);
     }
 }

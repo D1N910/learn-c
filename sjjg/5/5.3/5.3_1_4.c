@@ -2,18 +2,18 @@
 #include <stdlib.h>
 
 // 二叉树的结点（链式存储）
-typedef struct BiNode
+typedef struct BiTNode
 {
     int data; // 存储的值
-    struct BiNode * lchild, * rchild;
-}BiNode, *BiTree;
+    struct BiTNode * lchild, * rchild;
+}BiTNode, *BiTree;
 
 // 线索二叉树结点
 typedef struct ThreadNode
 {
     int data; // 存储的值
     struct ThreadNode * lchild, * rchild;
-    int ltag, rtag; // 左右线索标志
+    int ltag, rtag; // 左右线索标志，当tag位为1的时候才是线索，当tag位为0的时候表示孩子
 }ThreadNode, *ThreadTree;
 
 // 初始化树
@@ -36,6 +36,14 @@ void AddValue(BiTree, int);
 
 // 获得深度
 int TreeDepth(BiTree);
+
+// 访问节点
+void visit(BiTree);
+
+// 辅助全局变量，用于查找结点p的前驱
+BiTNode * p; // p指向目标结点
+BiTNode * pre=NULL; // 指向当前访问结点的前驱
+BiTNode * final=NULL; // 用于记录最终结果
 
 int main(void){
     BiTree T = NULL;
@@ -67,7 +75,7 @@ void IntTree(BiTree *T)
     if (*T != NULL) {
         return;
     }
-    *T = (BiTree)malloc(sizeof(BiNode));
+    *T = (BiTree)malloc(sizeof(BiTNode));
     (*T)->data = -1;
     (*T)->lchild = NULL;
     (*T)->rchild = NULL;
@@ -95,7 +103,7 @@ void AddValue(BiTree T, int x)
 // 先序遍历
 void PreOrder(BiTree T) {
     if (T != NULL) {
-        printf("%d ", T->data);
+       visit(T);
         PreOrder(T->lchild);
         PreOrder(T->rchild);
     }
@@ -105,7 +113,7 @@ void PreOrder(BiTree T) {
 void MidOrder(BiTree T) {
     if (T != NULL) {
         PreOrder(T->lchild);
-        printf("%d ", T->data);
+       visit(T);
         PreOrder(T->rchild);
     }
 }
@@ -115,7 +123,7 @@ void PostOrder(BiTree T) {
     if (T != NULL) {
         PreOrder(T->lchild);
         PreOrder(T->rchild);
-        printf("%d ", T->data);
+       visit(T);
     }
 }
 
@@ -128,4 +136,13 @@ int TreeDepth(BiTree T) {
         int r = TreeDepth(T->rchild);
         return l > r ? l + 1 : r + 1;
     }
+}
+
+// 访问结点q
+void visit(BiTree q) {
+    if (q == p) // 当前访问的结点刚好是结点P
+        final = pre; // 找到p的前驱
+    else
+        pre = q; // pre 只指向当前的结点
+    printf("%d ", q->data);
 }
