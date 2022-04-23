@@ -23,7 +23,7 @@ typedef struct VNode { // 顶点节点
 }VNode, OrthogonalList[MAXVerterNum];
 
 typedef struct {
-    OrthogonalList vertices; // 邻接表
+    OrthogonalList vertices; // 十字链表法
     int vexnum, arcnum; // 图的顶点数和弧数
 } OrthogonalListGraph; // 十字链表法的类型
 
