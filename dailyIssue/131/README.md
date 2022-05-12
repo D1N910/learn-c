@@ -22,4 +22,5 @@
 输入: [1,1,1,3,3,4,3,2,4,2]
 
 输出: true
+
 # from https://mp.weixin.qq.com/s/B7hifz6raYzf1uXmr8VAhw
