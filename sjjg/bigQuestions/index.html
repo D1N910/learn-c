@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="dd1d" width="100px" height="100px" src="https://cn.bing.com/images/search?view=detailV2&mediaurl=https%3a%2f%2fmedia-cdn.tripadvisor.com%2fmedia%2fphoto-s%2f03%2fb4%2fe8%2faf%2fcaption.jpg&expw=550&exph=369&cbid=AwzSmoItseWEdoA480x360&cbn=local&idpp=local&thid=AwzSmoItseWEdoA480x360&ypid=YN4067x15093084548519362021&useBFPR=0&eeptype=PhotoGroups&dataGroup=local:datagroup.photos&PhotoGroupName=AllPhotos&PageTag=AllPhotos&selectedIndex=3&id=AwzSmoItseWEdoA480x360&q=%E5%A4%8D%E6%97%A6&FORM=LOCIMG" alt="">
+</body>
+</html>
+
+<script>
+    document.getElementById('dd1d').addEventListener('click', function() {
+        alert('你碰了我！');
+    });
+    class A {
+        init() {
+            console.log('init()');
+            document.getElementById('dd1d').addEventListener('click', function() {
+                alert('你碰了我！');
+            });
+        }
+    }
+    var j = new A();
+    j.init();
+</script>
