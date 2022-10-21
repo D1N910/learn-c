@@ -37,7 +37,7 @@ int main(void)
     while (x != 9999) // 9999 表示结束
     {
         L = List_HeadInsert(L, x);
-        scanf("%d", &x);
+        scanf("%d ", &x);
     }
     printf("You have Enter %d numbers.\n", L->data);
     return 0;

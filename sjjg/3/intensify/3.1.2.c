@@ -10,7 +10,7 @@ typedef struct  {
 } SqStack;
 
 // 进栈
-_Bool InitStack(SqStack *S, ElemType x) {
+_Bool Push(SqStack *S, ElemType x) {
     if (S->top == Maxsize -1)
         return false;
     S->data[++S->top] = x;
@@ -42,12 +42,12 @@ int main() {
     SqStack S;
     S.top = -1; // 初始化栈顶指针
     int x; // 存储数据元素
-    InitStack(&S, 1);
+    Push(&S, 1);
     if (Pop(&S, &x))
         printf("%d Success \n", x);
     if (StackEmpty(S))
         printf("Stack is NULL\n");
-    InitStack(&S, 2);
+    Push(&S, 2);
     if (GetTop(S, &x))
         printf("%d get top Element Success\n", x);
     if (!StackEmpty(S))
