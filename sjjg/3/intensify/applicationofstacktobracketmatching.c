@@ -67,14 +67,27 @@ _Bool bracketcheck(char str[], int length) {
 }
 
 int main() {
-    char str[6] = { '(', '(', '{', '}', ')', ')' };
-    char str1[6] = { '(', '(', '{', '}', ')', ')' };
-    if (bracketcheck(str, 6))
-        printf("str - Success! \n");
-    else
-        printf("str - Fail! \n");
-    if (bracketcheck(str1, 6))
-        printf("str1 %s - Success! \n", str1);
-    else
-        printf("str1 - Fail! \n");
+    FILE *fp = fopen("text.txt", "w");
+    if (fp == NULL) {
+        printf("哈哈!");
+    }
+
+    for (int i = 0;i<1000;i++)
+        fputs("我爱你 world!", fp);
+    fclose(fp);
+    // short b = -1;
+    // int c = b;
+    // printf("%d", c);
+    // char s[10] = "1+1+2+3";
+    // printf("%s", s);
+    // char str[6] = { '(', '(', '{', '}', ')', ')' };
+    // char str1[6] = { '(', '(', '{', '}', ')', ')' };
+    // if (bracketcheck(str, 6))
+    //     printf("str - Success! \n");
+    // else
+    //     printf("str - Fail! \n");
+    // if (bracketcheck(str1, 6))
+    //     printf("str1 %s - Success! \n", str1);
+    // else
+    //     printf("str1 - Fail! \n");
 }
