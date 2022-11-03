@@ -31,5 +31,6 @@ int main() {
 
     char c[MAXSIZE];
     printf("sizeof c %lu \n", sizeof(char));
-    printf("sizeof c %lu", sizeof(c)/sizeof(char));
+    printf("sizeof c %lu \n", sizeof(c)/sizeof(char));
+    printf("sizeof c %lu \n", sizeof(HString));
 }
