@@ -16,6 +16,7 @@
         "__string": "c",
         "ios": "c",
         "iostream": "cpp",
-        "chrono": "c"
+        "chrono": "c",
+        "6.5.5.C": "cpp"
     }
 }
