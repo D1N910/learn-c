@@ -1,34 +1,91 @@
 #include <stdio.h>
 /**
- * @brief 希尔排序
+ * @brief 直接插入排序
  * 
  * @param A 要排序的数组
  * @param n 数组的长度
  */
-void ShellSort (int A[], int n);
+void InsertSort(int A[], int n);
+
+/**
+ * @brief 哨兵排序
+ * 
+ * @param A 要排序的数组
+ * @param n 数组的长度
+ */
+void InsertSortGuard (int A[], int n);
+
+/**
+ * @brief 折半插入排序
+ * 
+ * @param A 要排序的数组
+ * @param n 数组的长度
+ */
+void BinartInsertSort (int A[], int n);
 
 int main() {
-    int B[9] = {0,49,38,65,97,76,13,27,49};
+    int A[7] = {9,5, 8, 4, 3, 2, 1};
+    InsertSort(A, 7);
+    for (int i = 0; i<7;i++) {
+        printf("%d ", A[i]);
+    }
 
-    ShellSort(B, 9);
-    for (int i = 1; i< 9; i++) {
+    printf("\n");
+
+    int B[12] = {0,20,30,40,50,60,70,80,
+    55,60,90,10};
+
+    BinartInsertSort(B, 12);
+    for (int i = 1; i< 12; i++) {
         printf("%d ", B[i]);
     }
 }
 
 
-void ShellSort (int A[], int n) {
-    int d,i,j;
-    for (d= n/2; d>=1;d = d/2) { // 步长变化，太妙了，用这个就可以相当于多个子表了
-        for(i = d+1;i<n;++i){ // d+1 就是留出第一个作为对比，而且后面的都可以和自己“表”的前一个进行对比
-            if (A[i]<A[i-d]) { //需将A[i]插入有序增量子表
-                // 只是暂存单元，不是哨兵，当j<=0时，插入位置已到
-                A[0] = A[i]; //暂存在A[0]
-                for (j = i-d;j>0 && A[j] > A[0];j = j-d) {
-                    A[j+d] = A[j]; //记录后移，查找插入的位置
+void BinartInsertSort (int A[], int n) {
+    int min, max, mid; // 工具指针
+    for (int i = 2; i< n; i++) {
+        printf("\nii %d ii\n", i);
+        A[0] = A[i]; // 要对比的元素
+        if (A[i] < A[i - 1]) {
+            printf("\nA[0] %d ii A[0]\n", A[0]);
+            for (min = 1,max = i - 1;max > min;) {
+                mid = (min + max) / 2;
+                printf("\n mid %d A[mid]\n", A[mid]);
+                printf("\n A %d A[A]\n", A[0]);
+                if (A[mid] > A[0]) {
+                    max = mid-1;
+                } else {
+                    min = mid+1;
                 }
-                A[j+d] = A[0]; //插入 因为j对应的关键字是不比A[0]大的，而上一次比A关键字大的是j+d
-            } // if
+            }
+            for (int j = i;j>min;j--)
+                A[j] = A[j-1];
+            A[min] = A[0];
+        }
+    }
+}
+
+void InsertSortGuard(int A[], int n) {
+    int i, j;
+    for (i = 2;i<n;i++) {
+        if (A[i] < A[i-1]) {
+            A[0] = A[i]; // 放置哨兵
+            for (j = i - 1; A[0] < A[j]; j--)
+                A[j+1] = A[j];
+            A[j+1] = A[0];
+        }
+    }
+}
+
+void InsertSort(int A[], int n) {
+    int i, j, temp;
+    for (i = 1;i<n;i++) {
+        if (A[i] < A[i-1]) {
+            temp = A[i];
+            for (j = i - 1; j >=0 && A[j] > temp; j--)
+                A[j+1] = A[j];
+            A[j+1] = temp;
         }
     }
 }
